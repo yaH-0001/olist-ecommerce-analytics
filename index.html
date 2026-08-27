@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ankit Saini — Data Analyst</title>
+<meta name="description" content="Ankit Saini, Jr. Data Analyst. Turning complex data into actionable insights, dashboards, and business decisions." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     EDIT-ME ZONE lives in the CONFIG object at the top of the
+     <script> block near the bottom of this file — name, role,
+     links, stats, and bio all live there in one place.
+     ============================================================ */
+
+  :root{
+    --bg:#0F1721; --surface:#16212E; --surface-2:#1C2837;
+    --primary:#2DD4BF; --secondary:#38BDF8; --tertiary:#F59E0B;
+    --text:#EDF2F7; --muted:#8B98A8; --border: rgba(237,242,247,0.10);
+    --radius: 14px;
+    --ease: cubic-bezier(.16,.84,.44,1);
+    --transition-theme: background-color .6s var(--ease), border-color .6s var(--ease), color .6s var(--ease);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } * { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; } }
+
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Inter', system-ui, sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+    transition: var(--transition-theme);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{ font-family:'Space Grotesk', sans-serif; margin:0; letter-spacing:-0.02em; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; }
+  ::selection{ background:var(--primary); color:var(--bg); }
+
+  :focus-visible{ outline:2px solid var(--primary); outline-offset:3px; border-radius:4px; }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--border);
+    transition: var(--transition-theme);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .logo{ display:flex; align-items:center; gap:10px; font-weight:600; font-size:15px; text-decoration:none; }
+  .logo-mark{
+    width:34px; height:34px; border-radius:9px;
+    background:linear-gradient(135deg, var(--primary), var(--secondary));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-weight:600; font-size:13px; color:var(--bg);
+    transition: var(--transition-theme);
+  }
+  .navlinks{ display:flex; align-items:center; gap:28px; }
+  .navlinks a{ font-size:14px; color:var(--muted); text-decoration:none; transition:color .25s; }
+  .navlinks a:hover{ color:var(--text); }
+
+  .season-badge{
+    display:flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.04em;
+    color:var(--muted); background:var(--surface); border:1px solid var(--border);
+    padding:7px 8px 7px 12px; border-radius:999px; cursor:pointer;
+    transition: var(--transition-theme), transform .15s;
+  }
+  .season-badge:hover{ transform:translateY(-1px); border-color:var(--primary); }
+  .season-dot{ width:7px; height:7px; border-radius:50%; background:var(--primary); flex-shrink:0; }
+  .season-badge svg{ width:13px; height:13px; opacity:.7; }
+  .season-badge.loading svg{ animation: spin 1s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  @media (max-width:720px){ .navlinks{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:88px 0 64px; }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.08em;
+    color:var(--primary); text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:24px; height:1px; background:var(--primary); }
+
+  .hero h1{ font-size:clamp(2.2rem, 5vw, 3.6rem); font-weight:600; max-width:820px; line-height:1.08; }
+  .hero h1 .hl{ color:var(--primary); }
+  .hero p.lead{ margin:22px 0 0; color:var(--muted); font-size:18px; max-width:560px; }
+
+  .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .btn{
+    font-family:'Inter', sans-serif; font-weight:600; font-size:14.5px;
+    padding:13px 22px; border-radius:10px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:1px solid transparent;
+    transition: transform .15s var(--ease), background .25s, border-color .25s, color .25s;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--primary); color:var(--bg); }
+  .btn-secondary{ background:var(--surface); border-color:var(--border); color:var(--text); }
+  .btn-ghost{ background:transparent; border-color:var(--border); color:var(--muted); }
+  .btn-ghost:hover{ color:var(--text); border-color:var(--muted); }
+
+  /* ---------- Order Pulse + stats ---------- */
+  .pulse-panel{
+    margin-top:56px; background:var(--surface); border:1px solid var(--border);
+    border-radius:var(--radius); padding:28px 28px 20px;
+    transition: var(--transition-theme);
+  }
+  .pulse-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+  .pulse-title{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted); letter-spacing:.04em; }
+  .live-dot{ width:7px; height:7px; border-radius:50%; background:var(--tertiary); position:relative; }
+  .live-dot::after{
+    content:''; position:absolute; inset:-5px; border-radius:50%; border:1px solid var(--tertiary);
+    animation: pulse-ring 2.2s ease-out infinite;
+  }
+  @keyframes pulse-ring{ 0%{ transform:scale(.6); opacity:.9; } 100%{ transform:scale(1.8); opacity:0; } }
+
+  .sparkline{ width:100%; height:88px; display:block; }
+  .sparkline path.line{
+    fill:none; stroke:var(--primary); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:600; stroke-dashoffset:600;
+    animation: draw 1.6s var(--ease) forwards .3s;
+  }
+  .sparkline path.fill{ fill:url(#pulseFill); opacity:0; animation: fadein .8s ease forwards 1.2s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes fadein{ to{ opacity:1; } }
+
+  .stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:22px; border-radius:10px; overflow:hidden; }
+  .stat{ background:var(--surface-2); padding:18px 20px; transition: var(--transition-theme); }
+  .stat .num{ font-family:'JetBrains Mono', monospace; font-size:26px; font-weight:600; }
+  .stat.alert .num{ color:var(--tertiary); }
+  .stat .label{ font-size:12.5px; color:var(--muted); margin-top:4px; }
+  @media (max-width:640px){ .stat-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Skills strip ---------- */
+  .skills{ padding:48px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); transition: var(--transition-theme); }
+  .skills .wrap{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+  .skills .label{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted); margin-right:8px; white-space:nowrap; }
+  .chip{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--text);
+    background:var(--surface); border:1px solid var(--border); padding:7px 13px; border-radius:999px;
+    transition: var(--transition-theme), border-color .25s;
+  }
+  .chip:hover{ border-color:var(--primary); }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:88px 0; }
+  .section-head{ margin-bottom:44px; max-width:640px; }
+  .section-head h2{ font-size:clamp(1.7rem,3vw,2.3rem); font-weight:600; }
+  .section-head p{ color:var(--muted); margin-top:12px; font-size:16px; }
+
+  /* ---------- Pipeline stepper ---------- */
+  .pipeline{ display:flex; flex-wrap:wrap; gap:0; margin-bottom:36px; }
+  .pipeline .step{ display:flex; align-items:center; }
+  .pipeline .step span{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--muted); padding:6px 0;
+  }
+  .pipeline .step.active span{ color:var(--primary); }
+  .pipeline .arrow{ color:var(--border); margin:0 12px; font-size:13px; }
+
+  /* ---------- Featured project ---------- */
+  .project-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:20px;
+    padding:40px; transition: var(--transition-theme);
+  }
+  .project-card h3{ font-size:clamp(1.5rem,3vw,2rem); font-weight:600; }
+  .project-card .desc{ color:var(--muted); margin-top:16px; font-size:15.5px; max-width:680px; }
+  .project-card .desc strong{ color:var(--text); font-weight:600; }
+
+  .mini-stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:32px 0; }
+  .mini-stat{ background:var(--surface-2); border-radius:10px; padding:16px; transition: var(--transition-theme); }
+  .mini-stat .num{ font-family:'JetBrains Mono', monospace; font-size:19px; font-weight:600; color:var(--primary); }
+  .mini-stat.alert .num{ color:var(--tertiary); }
+  .mini-stat .label{ font-size:11.5px; color:var(--muted); margin-top:4px; line-height:1.3; }
+  @media (max-width:760px){ .mini-stats{ grid-template-columns:repeat(2,1fr); } }
+
+  .tool-row{ display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 28px; }
+  .tool-tag{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted); border:1px solid var(--border); padding:5px 10px; border-radius:6px; }
+
+  /* ---------- Coming soon ---------- */
+  .more-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:720px){ .more-grid{ grid-template-columns:1fr; } }
+  .ghost-card{
+    border:1.5px dashed var(--border); border-radius:16px; padding:32px;
+    display:flex; flex-direction:column; justify-content:space-between; min-height:180px;
+    transition: var(--transition-theme), border-color .25s;
+  }
+  .ghost-card:hover{ border-color:var(--muted); }
+  .ghost-card h4{ font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:600; color:var(--muted); }
+  .ghost-card .tag{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted); border:1px solid var(--border); align-self:flex-start; padding:4px 9px; border-radius:5px; margin-top:14px;
+  }
+
+  /* ---------- About / contact ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:start; }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; gap:32px; } }
+  .about-grid p{ color:var(--muted); font-size:16px; max-width:520px; }
+  .contact-list{ display:flex; flex-direction:column; gap:2px; }
+  .contact-list a{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0; border-bottom:1px solid var(--border); text-decoration:none;
+    font-size:15px; color:var(--text); transition:padding-left .25s, color .25s;
+  }
+  .contact-list a:hover{ padding-left:8px; color:var(--primary); }
+  .contact-list a .arrow{ color:var(--muted); font-family:'JetBrains Mono',monospace; }
+
+  /* ---------- Footer ---------- */
+  footer{ border-top:1px solid var(--border); padding:32px 0; transition: var(--transition-theme); }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer p{ font-size:12.5px; color:var(--muted); margin:0; font-family:'JetBrains Mono', monospace; }
+
+  /* ---------- Toast ---------- */
+  #toast{
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--surface-2); border:1px solid var(--border); color:var(--text);
+    padding:12px 18px; border-radius:10px; font-size:13.5px; opacity:0; pointer-events:none;
+    transition:opacity .3s var(--ease), transform .3s var(--ease); z-index:100; max-width:90vw; text-align:center;
+  }
+  #toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo"><span class="logo-mark">AS</span> Ankit Saini</a>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="season-badge" id="seasonBadge" title="Regenerate theme with Claude">
+      <span class="season-dot" id="seasonDot"></span>
+      <span id="seasonLabel" class="mono">MONSOON</span>
+      <svg id="seasonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero wrap">
+    <div class="eyebrow">Jr. Data Analyst · New Delhi, India</div>
+    <h1>I turn checkout logs into <span class="hl">decisions</span>, not just charts.</h1>
+    <p class="lead">Data Analyst focused on transforming complex data into actionable insights, intuitive dashboards, and data-driven business decisions.</p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#github-repo-url" data-cta="github">View GitHub Project →</a>
+      <a class="btn btn-secondary" href="#powerbi-dashboard-url" data-cta="dashboard">View Dashboard</a>
+      <a class="btn btn-ghost" href="#linkedin-url" data-cta="linkedin">Connect on LinkedIn</a>
+    </div>
+
+    <div class="pulse-panel">
+      <div class="pulse-head">
+        <span class="pulse-title">ORDER_PULSE.SVG · OLIST DATASET</span>
+        <span class="live-dot" aria-hidden="true"></span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 600 88" preserveAspectRatio="none" role="img" aria-label="Illustrative order volume trend line">
+        <defs>
+          <linearGradient id="pulseFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="var(--primary)" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path class="fill" d="M0,60 L40,52 L80,58 L120,40 L160,46 L200,30 L240,38 L280,22 L320,34 L360,18 L400,26 L440,14 L480,24 L520,10 L560,20 L600,8 L600,88 L0,88 Z"/>
+        <path class="line" d="M0,60 L40,52 L80,58 L120,40 L160,46 L200,30 L240,38 L280,22 L320,34 L360,18 L400,26 L440,14 L480,24 L520,10 L560,20 L600,8"/>
+      </svg>
+
+      <div class="stat-grid">
+        <div class="stat"><div class="num mono" data-count="99441">0</div><div class="label">Orders analyzed</div></div>
+        <div class="stat"><div class="num mono" data-count="96096">0</div><div class="label">Unique customers</div></div>
+        <div class="stat alert"><div class="num mono" data-decimal="8.1">0%</div><div class="label">Late deliveries flagged</div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <span class="label">STACK →</span>
+      <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">SQL</span>
+      <span class="chip">Excel</span><span class="chip">Power BI</span><span class="chip">Data Cleaning</span>
+      <span class="chip">EDA</span><span class="chip">Data Modeling</span><span class="chip">KPI Development</span>
+      <span class="chip">Data Visualization</span><span class="chip">Business Intelligence</span>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Featured case study</h2>
+        <p>One project, worked end to end — from raw order logs to a business recommendation.</p>
+      </div>
+
+      <div class="pipeline mono">
+        <div class="step active"><span>Ingest</span></div><div class="arrow">→</div>
+        <div class="step active"><span>Clean</span></div><div class="arrow">→</div>
+        <div class="step active"><span>Model</span></div><div class="arrow">→</div>
+        <div class="step active"><span>Visualize</span></div><div class="arrow">→</div>
+        <div class="step active"><span>Decide</span></div>
+      </div>
+
+      <div class="project-card">
+        <h3>Olist E-Commerce Analytics</h3>
+        <p class="desc">An end-to-end e-commerce analytics project built with <strong>Python, SQL, Excel, and Power BI-ready data modeling</strong>, analyzing <strong>99K+ orders</strong> and <strong>96K+ customers</strong>. The project explores revenue, customer behavior, product and seller performance, payment patterns, geography, delivery performance, and customer experience. The standout finding: <strong>~8.1% of delivered orders arrived late</strong> — a clear, quantified opening to improve customer retention and operational performance.</p>
+
+        <div class="mini-stats">
+          <div class="mini-stat"><div class="num">99,441</div><div class="label">Orders</div></div>
+          <div class="mini-stat"><div class="num">96,096</div><div class="label">Customers</div></div>
+          <div class="mini-stat alert"><div class="num">8.1%</div><div class="label">Late delivery rate</div></div>
+          <div class="mini-stat"><div class="num">7</div><div class="label">Analysis domains covered</div></div>
+        </div>
+
+        <div class="tool-row">
+          <span class="tool-tag">Python</span><span class="tool-tag">Pandas</span><span class="tool-tag">SQL</span>
+          <span class="tool-tag">Excel</span><span class="tool-tag">Power BI</span><span class="tool-tag">EDA</span>
+          <span class="tool-tag">KPI Development</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#github-repo-url" data-cta="github">View GitHub Project →</a>
+          <a class="btn btn-secondary" href="#powerbi-dashboard-url" data-cta="dashboard">View Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>More case studies</h2>
+        <p>This portfolio is built to grow — new work slots straight into this layout.</p>
+      </div>
+      <div class="more-grid">
+        <div class="ghost-card">
+          <h4>Next case study — in progress</h4>
+          <span class="tag">Coming soon</span>
+        </div>
+        <div class="ghost-card">
+          <h4>Next case study — in progress</h4>
+          <span class="tag">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:16px;">
+          <h2>About</h2>
+        </div>
+        <p>I'm Ankit Saini, a Jr. Data Analyst based in New Delhi. I care about the distance between a raw table and a decision someone can actually act on — cleaning and modeling data until it's honest, then visualizing it until it's obvious. Currently exploring e-commerce, delivery, and retention analytics.</p>
+      </div>
+      <div id="contact">
+        <div class="contact-list">
+          <a href="#github-repo-url" data-cta="github">GitHub <span class="arrow mono">↗</span></a>
+          <a href="#powerbi-dashboard-url" data-cta="dashboard">Power BI Dashboard <span class="arrow mono">↗</span></a>
+          <a href="#linkedin-url" data-cta="linkedin">LinkedIn <span class="arrow mono">↗</span></a>
+          <a href="mailto:your-email@example.com" data-cta="email">Email <span class="arrow mono">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© <span id="year"></span> ANKIT SAINI — THEME: <span id="footerSeason">MONSOON</span> (AUTO / CLAUDE-GENERATED)</p>
+    <p>BUILT WITH A SELF-THEMING ENGINE</p>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================================================================
+   EDIT-ME CONFIG — update your real links here once they exist.
+   Everything with data-cta="github/dashboard/linkedin/email" in
+   the markup above pulls from this object, so you only edit once.
+   ================================================================ */
+const CONFIG = {
+  githubUrl:   "#",  // e.g. "https://github.com/yourname/olist-ecommerce-analytics"
+  dashboardUrl:"#",  // e.g. your published Power BI report link
+  linkedinUrl: "#",  // e.g. "https://linkedin.com/in/yourname"
+  email:       "your-email@example.com"
+};
+document.querySelectorAll('[data-cta="github"]').forEach(el => el.href = CONFIG.githubUrl);
+document.querySelectorAll('[data-cta="dashboard"]').forEach(el => el.href = CONFIG.dashboardUrl);
+document.querySelectorAll('[data-cta="linkedin"]').forEach(el => el.href = CONFIG.linkedinUrl);
+document.querySelectorAll('[data-cta="email"]').forEach(el => el.href = "mailto:" + CONFIG.email);
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ================================================================
+   SEASONAL THEME ENGINE
+   1. Determine season from today's date (IMD-style Indian seasons).
+   2. Apply the matching curated palette immediately — zero flash,
+      zero network dependency.
+   3. On demand, ask a serverless function (see /api/generate-theme.js)
+      to have Claude generate a fresh variant. Falls back gracefully
+      if that endpoint isn't deployed.
+   ================================================================ */
+
+const SEASON_PALETTES = {
+  winter:  { name:"Winter",       bg:"#0B1220", surface:"#131B2E", surface2:"#192338", primary:"#7DD3FC", secondary:"#A78BFA", tertiary:"#F472B6", text:"#F1F5F9", muted:"#8291A8" },
+  spring:  { name:"Spring",       bg:"#0E1A14", surface:"#16261D", surface2:"#1C2F23", primary:"#4ADE80", secondary:"#FBBF24", tertiary:"#F472B6", text:"#F0FDF4", muted:"#86A897" },
+  summer:  { name:"Summer",       bg:"#1A1108", surface:"#241708", surface2:"#2E1E0C", primary:"#FBBF24", secondary:"#FB7185", tertiary:"#38BDF8", text:"#FFF7ED", muted:"#B9A184" },
+  monsoon: { name:"Monsoon",      bg:"#0F1721", surface:"#16212E", surface2:"#1C2837", primary:"#2DD4BF", secondary:"#38BDF8", tertiary:"#F59E0B", text:"#EDF2F7", muted:"#8B98A8" },
+  autumn:  { name:"Post-Monsoon", bg:"#170F0A", surface:"#241A10", surface2:"#2E2214", primary:"#F59E0B", secondary:"#EF4444", tertiary:"#34D399", text:"#FEF3E2", muted:"#B39A82" },
+};
+
+function getSeason(date = new Date()){
+  const m = date.getMonth(); // 0=Jan
+  if (m === 11 || m === 0 || m === 1) return "winter";
+  if (m === 2 || m === 3) return "spring";
+  if (m === 4 || m === 5) return "summer";
+  if (m === 6 || m === 7 || m === 8) return "monsoon";
+  return "autumn"; // Oct, Nov
+}
+
+function applyPalette(p){
+  const r = document.documentElement.style;
+  r.setProperty('--bg', p.bg);
+  r.setProperty('--surface', p.surface);
+  r.setProperty('--surface-2', p.surface2);
+  r.setProperty('--primary', p.primary);
+  r.setProperty('--secondary', p.secondary);
+  r.setProperty('--tertiary', p.tertiary);
+  r.setProperty('--text', p.text);
+  r.setProperty('--muted', p.muted);
+  document.getElementById('seasonLabel').textContent = p.name.toUpperCase();
+  document.getElementById('footerSeason').textContent = p.name.toUpperCase();
+}
+
+let currentSeasonKey = getSeason();
+applyPalette(SEASON_PALETTES[currentSeasonKey]);
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => t.classList.remove('show'), 4200);
+}
+
+async function regenerateWithAI(){
+  const badge = document.getElementById('seasonBadge');
+  badge.classList.add('loading');
+  try{
+    const res = await fetch('/api/generate-theme', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ season: currentSeasonKey })
+    });
+    if(!res.ok) throw new Error('endpoint not deployed');
+    const data = await res.json();
+    const fallback = SEASON_PALETTES[currentSeasonKey];
+    const merged = {
+      name: data.name || (fallback.name + " (AI)"),
+      bg: data.bg || fallback.bg, surface: data.surface || fallback.surface,
+      surface2: data.surface2 || fallback.surface2, primary: data.primary || fallback.primary,
+      secondary: data.secondary || fallback.secondary, tertiary: data.tertiary || fallback.tertiary,
+      text: data.text || fallback.text, muted: data.muted || fallback.muted,
+    };
+    applyPalette(merged);
+    showToast("New palette generated by Claude for " + fallback.name + ".");
+  }catch(err){
+    showToast("Live AI theming isn't deployed yet — showing the curated " + SEASON_PALETTES[currentSeasonKey].name + " palette. See README.md to enable it.");
+  }finally{
+    badge.classList.remove('loading');
+  }
+}
+document.getElementById('seasonBadge').addEventListener('click', regenerateWithAI);
+
+/* ---------- Count-up stats on scroll into view ---------- */
+function animateCount(el, target, decimals=0, duration=1200){
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const val = target * eased;
+    el.textContent = decimals ? val.toFixed(decimals) + '%' : Math.round(val).toLocaleString('en-IN');
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-count]').forEach(el => animateCount(el, parseInt(el.dataset.count, 10), 0));
+    entry.target.querySelectorAll('[data-decimal]').forEach(el => animateCount(el, parseFloat(el.dataset.decimal), 1));
+    statObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll('.stat-grid').forEach(el => statObserver.observe(el));
+</script>
+</body>
+</html>
